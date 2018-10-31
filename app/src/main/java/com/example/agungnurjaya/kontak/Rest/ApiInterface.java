@@ -15,7 +15,7 @@ public interface ApiInterface {
     @GET("kontak.php")
     Call<GetKontak> getKontak();
     @FormUrlEncoded
-    @POST("kontak")
+    @POST("insertdata.php")
     Call<PostPutDelKontak> postKontak(@Field("nama") String nama,
                                       @Field("nomor") String nomor);
     @FormUrlEncoded
