@@ -33,16 +33,17 @@ public class InsertActivity extends AppCompatActivity {
         btInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<PostPutDelKontak> postKontakCall = mApiInterface.postKontak(edtNama.getText().toString(), edtNomor.getText().toString());
-                postKontakCall.enqueue(new Callback<PostPutDelKontak>() {
+                PostPutDelKontak post = new PostPutDelKontak(edtNama.getText().toString(), edtNomor.getText().toString());
+                Call<String> postKontakCall = mApiInterface.postKontak(post);
+                postKontakCall.enqueue(new Callback<String>() {
                     @Override
-                    public void onResponse(Call<PostPutDelKontak> call, Response<PostPutDelKontak> response) {
+                    public void onResponse(Call<String> call, Response<String> response) {
                         MainActivity.ma.refresh();
                         finish();
                     }
 
                     @Override
-                    public void onFailure(Call<PostPutDelKontak> call, Throwable t) {
+                    public void onFailure(Call<String> call, Throwable t) {
                         Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
                     }
                 });

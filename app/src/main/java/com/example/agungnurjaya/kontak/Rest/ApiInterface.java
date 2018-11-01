@@ -3,6 +3,7 @@ import com.example.agungnurjaya.kontak.Model.GetKontak;
 import com.example.agungnurjaya.kontak.Model.PostPutDelKontak;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -14,10 +15,10 @@ public interface ApiInterface {
 
     @GET("kontak.php")
     Call<GetKontak> getKontak();
-    @FormUrlEncoded
-    @POST("insertdata.php")
-    Call<PostPutDelKontak> postKontak(@Field("nama") String nama,
-                                      @Field("nomor") String nomor);
+
+    @POST("insert.php")
+    Call<String> postKontak(@Body PostPutDelKontak post);
+
     @FormUrlEncoded
     @POST("updatephp.php")
     Call<PostPutDelKontak> putKontak(@Field("id") String id,

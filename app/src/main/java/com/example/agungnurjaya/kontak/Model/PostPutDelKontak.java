@@ -9,6 +9,13 @@ public class PostPutDelKontak {
     Kontak mKontak;
     @SerializedName("message")
     String message;
+    String nama, nomor;
+
+    public PostPutDelKontak(String nama, String nomor){
+        this.nama = nama;
+        this.nomor = nomor;
+    }
+
     public String getStatus() {
         return status;
     }
